@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{{ title }}</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+
+  <style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;height:80%;
+  }
+
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+  }
+
+  body {font-family: Helvetica;}
+
+    input[type=text], input[type=password] {
+      padding: 12px 20px;
+      margin: 8px 0;
+      width: auto;
+    }
+
+    button {
+      background-color: blue;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      cursor: pointer;
+      width: auto;
+    }
+
+    .button {
+      background-color: blue;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      cursor: pointer;
+      width: auto;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    .center {
+      text-align: center;
+      margin: auto;
+      width: 50%;
+      padding: 10px;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <center>
+
+
+        <!--<h2>MANAGE ACCOUNTS</h2> -->
+        <div style="text-align:left; display:inline-block">
+          <form action="/logout">
+              <button type="submit">Logout</button>
+          </form>
+        </div>
+        <div style="text-align:middle; display:inline-block">
+          <form action="/auto">
+              <button type="submit">Set Auto Mode</button>
+          </form>
+        </div>
+
+        <div style="text-align:right; display:inline-block">
+          <form action="/manual_mode">
+              <button type="submit">Set Manual Mode</button>
+          </form>
+        </div>
+
+        <div style="text-align:right; display:inline-block">
+          <form action="/kill_all">
+              <button type="submit">KILL APP</button>
+          </form>
+        </div>
+
+        <div style="text-align:right; display:inline-block">
+          <h3 style = "color:blue">{{m}}</h3>
+        </div>
+
+    <br>
+    <br>
+    <br><a href='//A2loadbalancer-1041861342.us-east-1.elb.amazonaws.com' target="_blank">User app URL</a><br>
+    <h2>Table</h2>
+    <table align="center">
+    <tr>
+    <th>Instance-id</th>
+    <th>Details</th>
+    </tr>
+    {% for i,j in row %}
+    <tr>
+    <td>{{i}}</td>
+    <td> <a href={{j}}>Details</a> </td>
+    </tr>
+    {% endfor %}
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>{{ title }}</h1>
+
+    <canvas id="chart" width="600" height="400"></canvas>
+    <script>
+
+      // bar chart data
+      var barData = {
+        labels : [
+          {% for item in labels %}
+            "{{ item }}",
+          {% endfor %}
+        ],
+
+        datasets : [{
+          fillColor: "rgba(151,187,205,0.2)",
+          strokeColor: "rgba(151,187,205,1)",
+          pointColor: "rgba(151,187,205,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(151,187,205,1)",
+          bezierCurve : false,
+          data : [
+	    {% for item in values %}
+              {{ item }},
+            {% endfor %}]
+          }
+	]
+      }
+
+      Chart.defaults.global.animationSteps = 50;
+      Chart.defaults.global.tooltipYPadding = 16;
+      Chart.defaults.global.tooltipCornerRadius = 0;
+      Chart.defaults.global.tooltipTitleFontStyle = "normal";
+      Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
+      Chart.defaults.global.animationEasing = "easeOutBounce";
+      Chart.defaults.global.responsive = false;
+      Chart.defaults.global.scaleLineColor = "black";
+      Chart.defaults.global.scaleFontSize = 16;
+
+      // get bar chart canvas
+      var mychart = document.getElementById("chart").getContext("2d");
+
+      steps = 10
+      max = {{ max }}
+      // draw bar chart
+      var LineChartDemo = new Chart(mychart).Line(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true,
+        bezierCurve: false,
+      });
+
+    </script>
+    </center>
+  </body>
+</html>
+

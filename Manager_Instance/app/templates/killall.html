@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mask detection - MANAGER</title>
+  </head>
+
+  <style>
+
+body {font-family: Helvetica;}
+
+input[type=text], input[type=password] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  width: auto;
+}
+
+button {
+  background-color: blue;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  width: auto;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.center {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+  </style>
+
+  <body>
+  <div class="center">
+
+      <div style="text-align:left; display:inline-block">
+          <form action="/home">
+              <button type="submit">Home</button>
+          </form>
+        </div>
+
+    <h1>KILL APP</h1>
+
+  <form action="{{url_for('killall')}}" method='post'>
+    <h2 style = "color:red">ARE YOU SURE YOU WANT TO TERMINATE ALL THE USER INSTANCES, DELETE ALL USER DATA AND STOP THE MANAGER APP?</h2>
+    <br><button type="submit">CONFIRM KILL</button>
+  </form>
+
+  </div>
+  </body>
+</html>
