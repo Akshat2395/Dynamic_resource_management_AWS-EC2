@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <title>Mask detection</title>
+  </head>
+
+
+
+  <style>
+
+body {font-family: Helvetica;}
+
+input[type=text], input[type=password] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  width: auto;
+}
+
+button {
+  background-color: blue;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  width: auto;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.center {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+</style>
+  <div class="center">
+    <h1>DIRECT API UPLOAD</h1>
+    <p>ENTER A VALID USERNAME AND PASSWORD<br> THEN EITHER CHOOSE AN IMAGE FROM YOUR LOCAL SYSTEM OR PASTE A WEBLINK OF THE PHOTO</p>
+    <form action={{url_for('api_upload')}} enctype="multipart/form-data" method="POST">
+      <label for="uname">Username:</label><br>
+      <input style="font-size:17px;" type="text" placeholder="Enter username" autocomplete="off" name="uname" value='{{uname if uname != None}}'><br>
+      <label for="pwd">Password:</label><br>
+      <input style="font-size:17px;" type="password" placeholder="Enter password" autocomplete="off" name="pwd" value='{{pwd if pwd != None}}'><br>
+
+
+      <p>Please provide the location of the image below if it is in your pc<br></p>
+      <input style="font-size:15px;" type="file" name="file" accept="image/*">
+      <p style="font-size:12px;">.jpg/.png/.JPEG files only</p><br>
+
+      <p>Please provide the webaddress of the image below if it is online</p>
+      <label for="webaddr">Website link:</label><br>
+      <input style="font-size:15px;" type="text" placeholder="Image weblink" autocomplete="off" name="webaddr" value='{{webaddr if webaddr != None}}'><br>
+
+      <br><button style="font-size:15px;" type="submit">Upload</button>
+      <p style = "color:red">{{err}}</p>
+    </form>
+  </div>
+  </body>
+</html>

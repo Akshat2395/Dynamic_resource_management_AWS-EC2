@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>  
+ <html>  
+ <head>  
+     <title>index</title>  
+ </head>
+
+ <style>
+
+    body {font-family: Helvetica;}
+
+    input[type=text], input[type=email] {
+      padding: 9px 20px;
+      margin: 8px 0;
+      width: auto;
+    }
+
+    button {
+      background-color: blue;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      cursor: pointer;
+      width: auto;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    .center {
+      text-align: center;
+      margin: auto;
+      width: 50%;
+      padding: 10px;
+    }
+
+  </style>
+
+ <body>
+ <div class="center">
+  <form action = '{{url_for('verify')}}' method = "POST">
+   <label for="uname">Username:</label><br>
+   <input type="text" placeholder="Username" autocomplete="off" name="uname" value='{{uname if uname != None}}'><br>
+   <p>Email address:</p>
+   <input type="email" placeholder="Email ID" autocomplete="off" name="email">
+  <br><button type = "submit">Submit</button>
+  <p style = "color:red">{{err}}</p>
+  </form>
+</div>
+ </body>  
+ </html> 
+ 

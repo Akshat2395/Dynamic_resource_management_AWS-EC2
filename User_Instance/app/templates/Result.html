@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mask detection</title>
+</head>
+
+<style>
+body {font-family: Helvetica;}
+
+button {
+  background-color: blue;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  cursor: pointer;
+  width: auto;
+}
+
+button:hover {
+  opacity: 0.7;
+
+}
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+.center {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+</style>
+
+<body>
+<div class="center">
+
+    <div style="text-align:left; display:inline-block">
+          <form action="/user">
+              <button type="submit">Home</button>
+          </form>
+    </div>
+    <div style="text-align:right; display:inline-block">
+          <form action="/logout">
+              <button type="submit">LOGOUT</button>
+          </form>
+    </div>
+
+<!--
+<h2>logout</h2>
+    <p><a href="/logout">logout</a></p>
+<h2>HOME</h2>
+    <p><a href="/user">Home</a></p>
+-->
+
+<h1>Processed Image</h1>
+<p>Total number of faces: {{f_no}}<br></p>
+<p>Number of faces with mask: {{fm_no}}<br></p>
+</div>
+<div class="imgcontainer">
+<h3>Processed Image</h3>
+<img src= "{{opimg}}" alt="Processed Image" width="500" height="600">
+</div>
+</body>
+</html>

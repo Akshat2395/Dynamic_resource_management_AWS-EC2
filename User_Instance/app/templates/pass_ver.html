@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+ <html>  
+ <head>  
+     <title>OTP Verification</title>  
+ </head>
+
+ <style>
+
+    body {font-family: Helvetica;}
+
+    input[type=text], input[type=email] {
+      padding: 9px 20px;
+      margin: 8px 0;
+      width: auto;
+    }
+
+    button {
+      background-color: blue;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      cursor: pointer;
+      width: auto;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    .center {
+      text-align: center;
+      margin: auto;
+      width: 50%;
+      padding: 10px;
+    }
+
+  </style>
+
+   <body>
+   <div class="center">
+   <form action = '{{url_for('validate')}}' method="post">
+     <h4>An OTP has been sent to your email</h4>
+        <input type="text" autocomplete="off" placeholder="Enter OTP" name="otp">
+        <br><br><button type="submit">Verify</button>
+     <p style = "color:red">{{err}}</p>
+   </form>
+    </div>
+ </body>  
+ </html>  

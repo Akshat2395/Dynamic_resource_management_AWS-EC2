@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mask detection</title>
+</head>
+
+<style>
+
+body {font-family: Helvetica;}
+
+
+button {
+  background-color: blue;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  cursor: pointer;
+  width: auto;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+
+.center {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+</style>
+
+<body>
+<div class="center">
+
+    {% if uname == "admin" %}
+        <!--<h2>MANAGE ACCOUNTS</h2> -->
+        <div style="text-align:left; display:inline-block">
+          <form action="/register">
+              <button type="submit">Create User</button>
+          </form>
+        </div>
+        <div style="text-align:middle; display:inline-block">
+          <form action="/delete">
+              <button type="submit">Remove User</button>
+          </form>
+        </div>
+    {% endif %}
+        <div style="text-align:right; display:inline-block">
+          <form action="/pass_change">
+              <button type="submit">Change Password</button>
+          </form>
+        </div>
+          <div style="text-align:right; display:inline-block">
+          <form action="/logout">
+              <button type="submit">LOGOUT</button>
+          </form>
+        </div>
+
+        <!-- <p><a href="/logout">logout</a></p>-->
+        <!--<p><a href="/register">Create User</a></p> -->
+        <!--<p><a href="/delete">Remove User</a></p> -->
+
+
+<h1>Hello {{uname}},</h1>
+<p>Please provide the location of the image below if it is in your pc<br></p>
+ <form method="POST" action="" enctype="multipart/form-data">
+     <input type="file" name="file" accept="image/*">
+     <button type="submit">Submit</button>
+ </form>
+<p>Please provide the webaddress of the image below if it is online</p>
+<form action='{{url_for('user1')}}' method='post'>
+  <label for="webaddr">Website link:</label><br>
+  <input type="text" placeholder="Image weblink" autocomplete="off" name="webaddr" value='{{webaddr if webaddr != None}}'>
+    <button type="submit">Submit</button>
+</form>
+<p style = "color:red">{{err}}</p>
+
+    <div style="text-align:middle;">
+          <form action="/history">
+              <button type="submit">Gallery</button>
+          </form>
+    </div>
+
+    <!-- <p>Past uploads<br><a href="/history">Gallery</a></p> -->
+
+
+
+
+</div>
+</body>
+</html>

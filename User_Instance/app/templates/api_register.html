@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mask detection</title>
+  </head>
+
+
+  <style>
+
+body {font-family: Helvetica;}
+body {text-align: center;}
+input[type=text], input[type=password] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  width: auto;
+}
+
+button {
+  background-color: blue;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  width: auto;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+
+.center {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+</style>
+
+  <body>
+  <div class="center">
+    <h1>USER REGISTRATION</h1>
+  <form action="{{url_for('api_register')}}" method="post">
+    <label for="uname">Username:</label><br>
+    <input style="font-size:17px;" type="text" placeholder="Enter username" autocomplete="off" name="uname" value='{{name if name != None}}'><br>
+    <label for="pwd">Password:</label><br>
+    <input style="font-size:17px;" type="password" placeholder="Enter password" autocomplete="off" name="pwd" value='{{pwd if pwd != None}}'><br>
+    <label for="re_pwd">Retype password:</label><br>
+    <input style="font-size:17px;" type="password" placeholder="Re-enter password" autocomplete="off" name="re_pwd" value='{{re_pwd if re_pwd != None}}'><br>
+    <br><button type="submit">Register</button>
+      <dl>
+        <div style="display:inline-block; text-align:left;">
+        <dt style = "font-size:17px">*The password should contain:</dt>
+        <dd style = "font-size:14px">- Minimum 8 characters</dd>
+        <dd style = "font-size:14px">- Maximum 17 characters</dd>
+        <dd style = "font-size:14px">- Atleast one uppercase letter</dd>
+        <dd style = "font-size:14px">- Atleast one lowercase letter</dd>
+        <dd style = "font-size:14px">- Atleast one digit</dd>
+        </div>
+      </dl>
+
+    <p style = "color:red">{{err}}</p>
+  </form>
+  </div>
+  </body>
+</html>

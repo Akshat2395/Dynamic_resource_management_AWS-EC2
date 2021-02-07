@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>Mask detection</title>
+  </head>
+
+  <style>
+
+body {font-family: Helvetica;}
+
+input[type=text], input[type=password] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  width: auto;
+}
+
+button {
+  background-color: blue;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  width: auto;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.center {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+</style>
+
+  <body>
+  <div class="center">
+    <div style="text-align:left;">
+      <form action="/user">
+        <input style="background-color:blue; color:white" type="submit" value="< Back home" />
+      </form>
+      <!-- <h2>HOME</h2> -->
+      <!--<p><a href="/user">Home</a></p> -->
+    </div>
+    <h1>NEW USER CREATION</h1>
+  <form action='{{url_for('register')}}' method='post'>
+    <label for="uname">Username:</label><br>
+    <input style="font-size:17px;" type="text" placeholder="Enter new username" autocomplete="off"  name="uname" value='{{name if name != None}}'><br>
+    <label for="pwd">Password:</label><br>
+    <input style="font-size:17px;" type="password" placeholder="Enter new username" autocomplete="off" name="pwd" value='{{pwd if pwd != None}}'><br>
+    <br><button type="submit">Create User</button>
+    <p style = "color:red">{{err}}</p>
+  </form>
+    </div>
+  </body>
+</html>

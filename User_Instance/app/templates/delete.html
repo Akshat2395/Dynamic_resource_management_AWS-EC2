@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <title>Mask detection</title>
+  </head>
+
+  <style>
+
+    body {font-family: Helvetica;}
+
+    input[type=text], input[type=password] {
+      padding: 12px 20px;
+      margin: 8px 0;
+      width: auto;
+    }
+
+    button {
+      background-color: blue;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      cursor: pointer;
+      width: auto;
+    }
+
+    .button {
+      background-color: blue;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      cursor: pointer;
+      width: auto;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    .center {
+      text-align: center;
+      margin: auto;
+      width: 50%;
+      padding: 10px;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+  </style>
+
+  <body>
+  <div class="center">
+
+    <div style="text-align:left; display:inline-block">
+          <form action="/user">
+              <button type="submit">Home</button>
+          </form>
+    </div>
+    <div style="text-align:right; display:inline-block">
+          <form action="/logout">
+              <button type="submit">LOGOUT</button>
+          </form>
+    </div>
+
+    <h1>Delete User</h1>
+    <!--<form action='{{url_for('delete')}}' method='post'>
+      <label for="uname">Username:</label><br>
+      <input type="text" autocomplete="off"  name="uname" value='{{uname if uname != None}}'><br>
+    <br><button type="submit">Delete</button>
+      <p style = "color:red">{{err}}</p>
+    </form>-->
+    <form action='{{url_for('delete')}}' method='post'>
+        <select name="uname">
+            {% for i in row %}
+            <option value={{i[0]}}>{{i[0]}}</option>
+            {% endfor %}
+        </select>
+        <br><br><button type="submit">Delete User</button>
+    </div>
+
+    <p style = "color:red">{{err}}</p>
+
+  </div>
+  </body>
+</html>
