@@ -1,6 +1,6 @@
 # Dynamic_resource_management_AWS-EC2
 
-**Note-* Please refer the documentation for more details.
+**Note- Please refer the documentation for more details.**
 
 ## Objective
 
